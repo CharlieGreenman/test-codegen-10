@@ -1,0 +1,29 @@
+{
+  "name": "test-codegen-10-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/test-codegen-10-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/test-codegen-10-e2e/cypress.json",
+        "devServerTarget": "test-codegen-10:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "test-codegen-10:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/test-codegen-10-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["test-codegen-10"]
+}
